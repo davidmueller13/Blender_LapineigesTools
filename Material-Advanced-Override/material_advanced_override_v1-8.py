@@ -79,9 +79,6 @@ class AdvancedMaterialOverride(bpy.types.Panel):
         if bpy.types.RENDER_OT_override_setup.l_mat:
             box.enabled = False
             row.enabled = False
-        #else:
-            #box.enabled = True
-            #row.enabled = True
 
         box.label('Objects not affected:')
         row = box.row()
