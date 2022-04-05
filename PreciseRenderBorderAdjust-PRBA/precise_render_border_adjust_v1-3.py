@@ -31,10 +31,10 @@ bpy.types.Scene.y_min_pixels = bpy.props.IntProperty(min=0, description="Minimum
 bpy.types.Scene.y_max_pixels = bpy.props.IntProperty(min=0, description="Maximum Y value (in pixel) for the render border")
 
 
-class PreciseRenderBorderAdjust(bpy.types.Panel):
+class PRBA_PT_preciserenderborderadjust(bpy.types.Panel):
     """Creates the tools in a Panel, in the scene context of the properties editor"""
     bl_label = "Precise Render Border Adjust"
-    bl_idname = "Precise_Render_Border_Adjust"
+    bl_idname = "PRBA_PT_preciserenderborderadjust"
     bl_space_type = 'PROPERTIES'
     bl_region_type = 'WINDOW'
     bl_context = "render"
@@ -45,7 +45,7 @@ class PreciseRenderBorderAdjust(bpy.types.Panel):
         scene = context.scene
         
         if not scene.render.use_border:
-            sub = layout.split(percentage=0.7)
+            sub = layout.split(factor=0.7)
             sub.label(icon="ERROR", text="Border Render not activated:")
             sub.prop(scene.render, "use_border")
         
@@ -133,13 +133,13 @@ class BorderToPixels(bpy.types.Operator):
         return {'FINISHED'}
 
 def register():
-    bpy.utils.register_class(PreciseRenderBorderAdjust)
+    bpy.utils.register_class(PRBA_PT_preciserenderborderadjust)
     bpy.utils.register_class(PixelsToBorder)
     bpy.utils.register_class(BorderToPixels)
 
 
 def unregister():
-    bpy.utils.unregister_class(PreciseRenderBorderAdjust)
+    bpy.utils.unregister_class(PRBA_PT_preciserenderborderadjust)
     bpy.utils.unregister_class(PixelsToBorder)
     bpy.utils.unregister_class(BorderToPixels)
 
